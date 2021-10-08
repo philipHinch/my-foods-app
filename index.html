@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Recepie App</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title"><span class="active">My</span> Foods <i class="fas fa-utensils active"></i></h1>
+        <nav class="navbar">
+            <a href="#" class="active"><i class="fas fa-home"></i></a>
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="far fa-list-alt"></i></a>
+            <a href="#"><i class="fas fa-heart"></i></a>
+        </nav>
+        <section class="random-meal-section">
+            <label for="random-meal-container" class="random-meal-label not-active">Random Meal</label>
+            <div class="random-meal-container" id="random-meal-container">
+                <div class="random-meal-info">
+                    <h3 class="random-meal-title active">Pasta Arrabbiata</h3>
+                    <p class=random-meal-category><i class="fas fa-boxes active"></i>Pasta</p>
+                    <p class="random-meal-area"><i class="fas fa-flag active"></i>Italian</p>
+                    <div class="heart-container">
+                        <i class="fas fa-heart pink"></i>
+                    </div> 
+                </div>
+                <div class="random-meal-photo">
+                    <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg" alt="random meal">
+                </div>
+            </div>
+        </section>
+        <section class="meal-categories-section">
+            <h2 class="meal-categories-title">Meal Category</h2>
+            <div class="categories-container">
+                <div class="category active-background"><i class="fas fa-drumstick-bite"></i><p>Chicken</p></div>
+                <div class="category"><i class="fas fa-drumstick-bite"></i><p>Chicken</p></div>
+                <div class="category"><i class="fas fa-drumstick-bite"></i><p>Chicken</p></div>
+                <div class="category"><i class="fas fa-drumstick-bite"></i><p>Chicken</p></div>
+                <div class="category"><i class="fas fa-drumstick-bite"></i><p>Chicken</p></div>
+                <div class="category"><i class="fas fa-drumstick-bite"></i><p>Chicken</p></div>
+                <div class="category"><i class="fas fa-drumstick-bite"></i><p>Chicken</p></div>
+            </div>
+            <div class="grid">
+                <div class="grid-item meal">
+                        <div class="meal-photo">
+                            <img src="https://www.themealdb.com/images/media/meals/qqwypw1504642429.jpg" alt="meal">
+                        </div>
+                        <div class="meal-info">
+                            <h3 class="meal-title active">Pasta Carbonara</h3>
+                            <p class=meal-category><i class="fas fa-boxes active"></i>Pasta</p>
+                            <p class="meal-area"><i class="fas fa-flag active"></i>Italian</p>
+                        </div>
+                        <div class="heart-container">
+                            <i class="fas fa-heart pink"></i>
+                        </div>          
+                </div>
+                <div class="grid-item meal">
+                        <div class="meal-photo">
+                            <img src="https://www.themealdb.com/images/media/meals/wtqrqw1511639627.jpg" alt="meal">
+                        </div>
+                        <div class="meal-info">
+                            <h3 class="meal-title active">Pasta Carbonara</h3>
+                            <p class=meal-category><i class="fas fa-boxes active"></i>Pasta</p>
+                            <p class="meal-area"><i class="fas fa-flag active"></i>Italian</p>
+                        </div>
+                        <div class="heart-container">
+                            <i class="far fa-heart"></i>
+                        </div>  
+                </div>
+                <div class="grid-item meal">
+                        <div class="meal-photo">
+                            <img src="https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg" alt="meal">
+                        </div>
+                        <div class="meal-info">
+                            <h3 class="meal-title active">Pasta Carbonara</h3>
+                            <p class=meal-category><i class="fas fa-boxes active"></i>Pasta</p>
+                            <p class="meal-area"><i class="fas fa-flag active"></i>Italian</p>
+                        </div>
+                        <div class="heart-container">
+                            <i class="far fa-heart"></i>
+                        </div>  
+                </div>
+                <div class="grid-item meal">
+                        <div class="meal-photo">
+                            <img src="https://www.themealdb.com/images/media/meals/qwtrtp1511799242.jpg" alt="meal">
+                        </div>
+                        <div class="meal-info">
+                            <h3 class="meal-title active">Pasta Carbonara</h3>
+                            <p class=meal-category><i class="fas fa-boxes active"></i>Pasta</p>
+                            <p class="meal-area"><i class="fas fa-flag active"></i>Italian</p>
+                        </div>
+                        <div class="heart-container">
+                            <i class="far fa-heart"></i>
+                        </div>  
+                </div>
+            </div>
+        </section>
+        <div class="extra-bottom-space"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

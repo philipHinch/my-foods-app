@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
+
+/* variables */
+
+:root {
+  --dark-grey: #242423;
+  --medium-grey: #333333;
+  --light-grey: #666666;
+  --active: #e6ad0f;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  background-color: #666;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin: 0 auto;
+  background-color: var(--dark-grey);
+  border: 8px solid black;
+  border-top: 16px solid black;
+  border-bottom: 16px solid black;
+  border-radius: 40px;
+  width: 414px;
+  height: 736px;
+  z-index: 200;
+  overflow-y: scroll;
+  position: relative;
+}
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+/* utility classes */
+
+a {
+  text-decoration: none;
+}
+
+.pink {
+  color: tomato !important;
+}
+
+.active {
+  color: var(--active) !important;
+}
+.active-background {
+  background-color: var(--active) !important;
+}
+
+.not-active {
+  color: var(--light-grey);
+}
+
+.extra-bottom-space {
+  height: 50px;
+  width: 100%;
+}
+
+/* main title */
+
+.main-title {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* navbar */
+
+.navbar {
+  position: sticky;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 100;
+  background-color: var(--medium-grey);
+  border-top: 2px solid var(--active);
+  top: 654px;
+  height: 50px;
+}
+
+.navbar a {
+  font-size: 1.7rem;
+  color: var(--light-grey);
+}
+
+/* random meal */
+
+.random-meal-section {
+  margin-top: -40px;
+}
+
+.random-meal-container {
+  display: flex;
+  margin: 0 auto;
+  width: 85%;
+  height: 150px;
+  overflow: hidden;
+
+  border-radius: 20px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.random-meal-label {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.random-meal-info {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  background-color: var(--medium-grey);
+  border-right: 2px solid var(--active);
+}
+
+.random-meal-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.random-meal-photo {
+  width: 100%;
+}
+
+.random-meal-photo img {
+  width: 100%;
+}
+
+.random-meal-category {
+  color: white;
+  margin-bottom: 4px;
+}
+
+.random-meal-category i {
+  margin-right: 8px;
+}
+.random-meal-area {
+  color: white;
+  margin-bottom: 10px;
+}
+.random-meal-area i {
+  margin-right: 8px;
+}
+
+/* meal categories */
+
+.meal-categories-section {
+  margin-top: 10px;
+}
+
+.meal-categories-title {
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+}
+
+.categories-container {
+  display: flex;
+  padding: 8px;
+  overflow-x: scroll;
+}
+
+.categories-container::-webkit-scrollbar {
+  display: none;
+}
+
+.category {
+  background-color: var(--light-grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100px;
+  cursor: grab;
+}
+
+.category i {
+  margin-right: 5px;
+}
+
+/* grid */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 6px auto;
+  width: 180px;
+  height: 250px;
+  background-color: var(--medium-grey);
+  border-radius: 20px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.meal-photo {
+  border-radius: 50%;
+  width: 100px;
+  overflow: hidden;
+  border: 2px solid var(--active);
+}
+
+.meal-photo img {
+  width: 100%;
+  transform: scale(1.1);
+}
+
+.meal-title {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.meal-category {
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.meal-category i {
+  margin-right: 8px;
+}
+.meal-area {
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.meal-area i {
+  margin-right: 8px;
+}
+
+/* heart */
+
+.heart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+.heart-container i {
+  font-size: 1.5rem;
+  color: var(--light-grey);
+}
