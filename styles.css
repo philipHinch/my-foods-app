@@ -109,11 +109,16 @@ a {
   width: 85%;
   height: 150px;
   overflow: hidden;
-
   border-radius: 20px;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   cursor: pointer;
+  border: 2px solid var(--dark-grey);
+  transition: border 0.2s;
+}
+
+.random-meal-container:hover {
+  border: 2px solid var(--active);
 }
 
 .random-meal-label {
@@ -223,6 +228,12 @@ a {
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   cursor: pointer;
+  border: 2px solid var(--dark-grey);
+  transition: border 0.2s;
+}
+
+.grid-item:hover {
+  border: 2px solid var(--active);
 }
 
 .meal-photo {
@@ -276,4 +287,20 @@ a {
 .heart-container i {
   font-size: 1.5rem;
   color: var(--light-grey);
+}
+
+.heart-1 {
+  transition: color 0.2s;
+}
+
+.heart-1:hover {
+  color: tomato;
+}
+
+.heart-2 {
+  transition: color 0.2s;
+}
+
+.heart-2:hover {
+  color: var(--light-grey) !important;
 }
