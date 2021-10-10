@@ -56,7 +56,7 @@ class UI {
                     category.classList.remove('active-background')
                 })
                 category.classList.add('active-background')
-                UI.getCategoryMeals(category.textContent)
+                UI.getCategoryMeals(category.id)
                 //UI.showCategoryMeals(category)
             })
         })
