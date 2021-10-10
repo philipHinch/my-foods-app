@@ -8,7 +8,7 @@ const idBaseURL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 
 
 //HANDLES API DATA
-async function getRandomMeal() {
+async function fetchRandomMeal() {
     const res = await fetch(randomMealURL)
     const data = await res.json()
     // let meal = new MealCard(data)
@@ -16,16 +16,19 @@ async function getRandomMeal() {
     UI.createRandomMealCard(data)
 }
 
-async function getCategoryMeals() {
-    const res = await fetch(categoryBaseURL + categoryValue)
+async function fetchCategoryMeals(category) {
+    const res = await fetch(categoryBaseURL + category)
     const data = await res.json()
-    UI.getMealIds(data)
+    return data
+    //UI.getMealIds(data)
 }
 
-async function getMealById(id) {
+async function fetchMealById(id) {
     const res = await fetch(idBaseURL + id)
     const data = await res.json()
     //find a way to return an array of objects
+    //console.log(data);
+    UI.createMeals(data)
     return data
 }
 
@@ -38,8 +41,9 @@ async function getMealById(id) {
 
 //LOAD FUNCTIONS ON WINDOW LOAD
 document.addEventListener('DOMContentLoaded', () => {
-    getRandomMeal()
+    fetchRandomMeal()
     UI.changeCategoryColor()
+    UI.getCategoryMeals('beef')
 })
 
 
