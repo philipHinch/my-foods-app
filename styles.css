@@ -201,7 +201,7 @@ a {
   padding: 10px;
   border-radius: 10px;
   width: 100px;
-  cursor: grab;
+  cursor: pointer;
 }
 
 .category i {

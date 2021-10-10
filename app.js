@@ -1,5 +1,11 @@
 //variables
 let RandomMealSection = document.querySelector('.random-meal-section');
+let categories = document.querySelectorAll('.category');
+let grid = document.querySelector('.grid')
+let categoryValue;
+let idsArr = []
+let meals = []
+
 
 //REPRESENTS A MEAL
 class MealCard {
@@ -14,6 +20,8 @@ class MealCard {
 
 //HANDLES UI TASKS
 class UI {
+
+    //creates a random meal card
     static createRandomMealCard(data) {
         //create a new meal obj
         const meal = new MealCard(data)
@@ -39,9 +47,76 @@ class UI {
         //append div to its parent element
         RandomMealSection.appendChild(card)
     }
+
+    //changes category background color on click
+    static changeCategoryColor() {
+        categories.forEach((category) => {
+            category.addEventListener('click', () => {
+                categories.forEach((category) => {
+                    category.classList.remove('active-background')
+                })
+                category.classList.add('active-background')
+                UI.showCategoryMeals(category)
+
+            })
+        })
+    }
+
+    //get category value and get meals by that category
+    static showCategoryMeals(data) {
+        categoryValue = data.textContent
+        //get all category meals from api
+        getCategoryMeals()
+    }
+
+    //get all meal ids and call function which gets meals by id from api
+    static getMealIds(data) {
+        let ids = [];
+        for (let i = 0; i < data.meals.length; i++) {
+            ids.push(data.meals[i].idMeal)
+        }
+        ids.forEach((id) => {
+            //console.log(id);
+            getMealById(id).then(res => meals.push(res))
+            //create a meal card and get the data from getMealFromId()
+            //idsArr.push(id)
+            //maybe call a create card function here and pass id as parameter
+        })
+        UI.createMealCard()
+
+    }
+
+
+
+    //create meal card
+    static createMealCard() {
+        grid.innerHTML = ''
+        for (let i = 0; i < meals.length; i++) {
+            let gridItem = document.createElement('div')
+            gridItem.classList.add('grid-item')
+            gridItem.classList.add('meal')
+            gridItem.innerHTML = `
+            <div class="meal-photo">
+            <img src="${ meals[i].meals[0].strMealThumb }" alt="meal">
+        </div>
+        <div class="meal-info">
+            <h3 class="meal-title active">${ meals[i].meals[0].strMeal }</h3>
+            <p class=meal-category><i class="fas fa-boxes active"></i>${ meals[i].meals[0].strCategory }</p>
+            <p class="meal-area"><i class="fas fa-flag active"></i>${ meals[i].meals[0].strArea }</p>
+        </div>
+        <div class="heart-container">
+            <i class="fas fa-heart heart-2 pink"></i>
+        </div>
+            `
+            grid.appendChild(gridItem)
+        }
+        meals = []
+    }
 }
 
-//HANDLES LOCAL STORAGE
+
+
+//HANDLES STORAGE
 
 class Storage {
 
