@@ -1,7 +1,8 @@
 //variables
-let RandomMealSection = document.querySelector('.random-meal-section');
+let randomMealSection = document.querySelector('.random-meal-section');
 let categories = document.querySelectorAll('.category');
 let grid = document.querySelector('.grid')
+let body = document.querySelector('body')
 let categoryValue;
 let idsArr = []
 let meals = []
@@ -29,14 +30,14 @@ class UI {
         let card = document.createElement('div');
         //insert obj data in new div
         card.innerHTML = `
-        <label for="random-meal-container" class="random-meal-label not-active">Random Meal</label>
-        <div class="random-meal-container" id="random-meal-container" data-id="${ meal.id }">
+        <p for="random-meal-container" class="random-meal-label not-active">Random Meal</p>
+        <div class="random-meal-container" id="${ meal.id }">
             <div class="random-meal-info">
                 <h3 class="random-meal-title active">${ meal.name }</h3>
                 <p class=random-meal-category><i class="fas fa-boxes active"></i>${ meal.type }</p>
                 <p class="random-meal-area"><i class="fas fa-flag active"></i>${ meal.area }</p>
                 <div class="heart-container">
-                    <i class="fas fa-heart heart-2 pink"></i>
+                    <i class="fas fa-heart heart-full"></i>
                 </div> 
             </div>
             <div class="random-meal-photo">
@@ -45,7 +46,7 @@ class UI {
         </div>
         `
         //append div to its parent element
-        RandomMealSection.appendChild(card)
+        randomMealSection.appendChild(card)
     }
 
     //changes category background color on click
@@ -62,6 +63,7 @@ class UI {
         })
     }
 
+    //fetch all category ids and all meal by those ids
     static getCategoryMeals(cat) {
         fetchCategoryMeals(cat).then((res) => {
             for (let i = 0; i < res.meals.length; i++) {
@@ -71,27 +73,129 @@ class UI {
         })
     }
 
-    static createMeals(meal) {
+    //create a meal card
+    // static createMeals(meal) {
+    //     let gridItem = document.createElement('div')
+    //     gridItem.classList.add('grid-item')
+    //     gridItem.classList.add('meal')
+    //     gridItem.id = `${ meal.meals[0].idMeal }`
+    //     gridItem.innerHTML = `
+    //             <div class="meal-photo">
+    //                 <img src="${ meal.meals[0].strMealThumb }" alt="meal">
+    //             </div>
+    //             <div class="meal-info">
+    //                 <h3 class="meal-title active">${ meal.meals[0].strMeal }</h3>
+    //                 <p class=meal-category><i class="fas fa-boxes active"></i>${ meal.meals[0].strCategory }</p>
+    //                 <p class="meal-area"><i class="fas fa-flag active"></i>${ meal.meals[0].strArea }</p>
+    //             </div>
+    //             <div class="heart-container">
+    //                 <i class="fas fa-heart heart-2 pink"></i>
+    //             </div>
+    //     `
+    //     grid.appendChild(gridItem)
+    // }
+
+    //create meal card
+    static createMeals(data) {
+        //create a new meal obj
+        const meal = new MealCard(data)
         let gridItem = document.createElement('div')
         gridItem.classList.add('grid-item')
         gridItem.classList.add('meal')
+        gridItem.id = `${ meal.id }`
         gridItem.innerHTML = `
                 <div class="meal-photo">
-                    <img src="${ meal.meals[0].strMealThumb }" alt="meal">
+                    <img src="${ meal.thumb }" alt="meal">
                 </div>
                 <div class="meal-info">
-                    <h3 class="meal-title active">${ meal.meals[0].strMeal }</h3>
-                    <p class=meal-category><i class="fas fa-boxes active"></i>${ meal.meals[0].strCategory }</p>
-                    <p class="meal-area"><i class="fas fa-flag active"></i>${ meal.meals[0].strArea }</p>
+                    <h3 class="meal-title active">${ meal.name }</h3>
+                    <p class=meal-category><i class="fas fa-boxes active"></i>${ meal.type }</p>
+                    <p class="meal-area"><i class="fas fa-flag active"></i>${ meal.area }</p>
                 </div>
                 <div class="heart-container">
-                    <i class="fas fa-heart heart-2 pink"></i>
+                    <div>
+                        <i class="fas fa-heart heart-full"></i>
+                    </div>
+                    
                 </div>
         `
         grid.appendChild(gridItem)
     }
 }
 
+//HANDLES STORAGE
+
+class Storage {
+
+    static getMealFromLS() {
+        let meals;
+        if (localStorage.getItem('meals') === null) {
+            meals = [];
+        } else {
+            meals = JSON.parse(localStorage.getItem('meals'));
+        }
+
+        return meals;
+    }
+
+    static addMealToLS(meal) {
+        const meals = Storage.getMealFromLS();
+        //check if id is already in LS
+        if (meals.includes(meal)) {
+            return
+        } else {
+            meals.push(meal);
+            localStorage.setItem('meals', JSON.stringify(meals));
+        }
+    }
+
+    static removeMealFromLS(id) {
+        const meals = Storage.getMealFromLS();
+        meals.forEach((meal, index) => {
+            if (meal === id) {
+                meals.splice(index, 1);
+            }
+        });
+        localStorage.setItem('meals', JSON.stringify(meals));
+    }
+}
+
+
+
+
+
+
+
+
+
+// EVENT LISTENERS
+
+//get meal id on random meal card click
+randomMealSection.addEventListener('click', (e) => {
+    if (e.target.parentElement.classList.contains('random-meal-container')) {
+        console.log(e.target.parentElement.id);
+    } else if (e.target.parentElement.parentElement.classList.contains('random-meal-container')) {
+        console.log(e.target.parentElement.parentElement.id);
+    }
+})
+
+//get meal id on grid card click
+grid.addEventListener('click', (e) => {
+    if (e.target.classList.contains('grid-item')) {
+        console.log(e.target.id);
+    } else if (e.target.parentElement.parentElement.classList.contains('grid-item')) {
+        console.log(e.target.parentElement.parentElement.id);
+    }
+})
+
+//body event listener
+body.addEventListener('click', (e) => {
+    if (e.target.classList.contains('fa-heart') && e.target.classList.contains('fas')) {
+        console.log('heart!!');
+        e.target.classList.toggle('pink')
+        e.target.classList.toggle('animate-heart')
+    }
+})
 
 
 
@@ -170,8 +274,3 @@ class UI {
 
 
 
-// //HANDLES STORAGE
-
-// class Storage {
-
-// }
