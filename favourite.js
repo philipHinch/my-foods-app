@@ -1,6 +1,65 @@
+//API DATA FUNCTIONS
+
+const randomMealURL = 'https://www.themealdb.com/api/json/v1/1/random.php';
+const categoryBaseURL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
+const idBaseURL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
+
+
+//fetch random meal
+async function fetchRandomMeal() {
+    try {
+        const res = await fetch(randomMealURL)
+        const data = await res.json()
+        // let meal = new MealCard(data)
+        // return meal.createRandomMealCard()
+        UI.createRandomMealCard(data)
+    } catch (err) {
+        console.log(err);
+    }
+
+}
+
+//fetch all meals within a category
+async function fetchCategoryMeals(category) {
+    try {
+        const res = await fetch(categoryBaseURL + category)
+        const data = await res.json()
+        return data
+        //UI.getMealIds(data)
+    } catch (err) {
+        console.log(err);
+    }
+
+}
+
+//fetch a meal by its id
+async function fetchMealById(id) {
+    try {
+        const res = await fetch(idBaseURL + id)
+        const data = await res.json()
+        //find a way to return an array of objects
+        //console.log(data);
+        UI.createMeals(data)
+        return data
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+//LOAD FUNCTIONS ON WINDOW LOAD
+document.addEventListener('DOMContentLoaded', () => {
+    //filter favourite meals by category
+    UI.filterFavouriteCategories()
+    //show favourite meals
+    UI.showFavouriteMeals()
+    //make the heart function work
+})
+
+///////////////////////////////////////////////////////////////////
+
 let categories = document.querySelectorAll('.category');
 let grid = document.querySelector('.grid-favourite')
-
+let body = document.querySelector('body')
 
 
 //REPRESENTS A MEAL
@@ -93,7 +152,30 @@ class UI {
     }
 
     static showFavouriteMeals() {
+        const meals = Storage.getMealFromLS();
+        meals.forEach((meal) => {
+            fetchMealById(meal)
+        })
+    }
 
+    static filterFavouriteCategories() {
+        //change category background color
+        categories.forEach((category) => {
+            category.addEventListener('click', () => {
+                categories.forEach((category) => {
+                    category.classList.remove('active-background')
+                })
+                category.classList.add('active-background')
+            })
+        })
+        //filter favourite meals
+        const meals = Storage.getMealFromLS();
+        categories.forEach((category) => {
+            category.addEventListener('click', () => {
+                console.log(category);
+            }
+            )
+        })
     }
 }
 
@@ -133,3 +215,15 @@ class Storage {
         localStorage.setItem('meals', JSON.stringify(meals));
     }
 }
+
+// EVENT LISTENERS
+
+//remove meal on heart click
+body.addEventListener('click', (e) => {
+    if (e.target.classList.contains('fa-heart') && e.target.classList.contains('fas')) {
+        e.target.parentElement.parentElement.parentElement.remove()
+        //remove favourite meal to/from storage
+        let id = e.target.parentElement.parentElement.parentElement.id
+        Storage.removeMealFromLS(id)
+    }
+})
