@@ -1,6 +1,8 @@
-# My Foods app
+# My Foods app 
 
-This is not your typical recepie app. 
+*Work in Progress...*
+
+This is not your typical recipe app. 
 
 My Foods will help you to look for your next delicious meal! Search your meals based on their category or the country of provenience. 
 
@@ -29,7 +31,5 @@ I used **async/await** together with **fetch** to grab the data from the api. Fa
 ---
 
 ![Preview Image](images/preview1.png)
-
----
 
 [View Project](https://philiphinch.github.io/my-foods-app/)
