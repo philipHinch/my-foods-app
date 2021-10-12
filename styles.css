@@ -6,6 +6,7 @@
   --dark-grey: #242423;
   --medium-grey: #333333;
   --light-grey: #666666;
+  --very-light-grey: #cdcdcd;
   --active: #e6ad0f;
   --white: #ffffff;
 }
@@ -24,6 +25,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .container {
@@ -311,12 +313,40 @@ a {
   color: var(--white);
   display: flex;
   justify-content: center;
-  margin-bottom: 0px;
 }
 
 .grid-favourite {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+}
+
+/* SEARCH PAGE */
+
+.search-input-text {
+  color: var(--white);
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#search-input {
+  font-size: 1.5rem;
+  font-family: inherit;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 2px solid var(--dark-grey);
+  background-color: var(--very-light-grey);
+  outline: none;
+}
+
+#search-input:focus {
+  background-color: white;
+  border-color: var(--active);
 }
 
 @keyframes heartAni {

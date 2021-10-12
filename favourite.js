@@ -10,8 +10,6 @@ async function fetchRandomMeal() {
     try {
         const res = await fetch(randomMealURL)
         const data = await res.json()
-        // let meal = new MealCard(data)
-        // return meal.createRandomMealCard()
         UI.createRandomMealCard(data)
     } catch (err) {
         console.log(err);
@@ -37,8 +35,6 @@ async function fetchMealById(id) {
     try {
         const res = await fetch(idBaseURL + id)
         const data = await res.json()
-        //find a way to return an array of objects
-        //console.log(data);
         UI.createMeals(data)
         return data
     } catch (err) {
