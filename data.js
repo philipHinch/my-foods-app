@@ -10,37 +10,46 @@ const idBaseURL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 //HANDLES API DATA
 //fetch random meal
 async function fetchRandomMeal() {
-    const res = await fetch(randomMealURL)
-    const data = await res.json()
-    // let meal = new MealCard(data)
-    // return meal.createRandomMealCard()
-    UI.createRandomMealCard(data)
+    try {
+        const res = await fetch(randomMealURL)
+        const data = await res.json()
+        // let meal = new MealCard(data)
+        // return meal.createRandomMealCard()
+        UI.createRandomMealCard(data)
+    } catch (err) {
+        console.log(err);
+    }
+
 }
 
 //fetch all meals within a category
 async function fetchCategoryMeals(category) {
-    const res = await fetch(categoryBaseURL + category)
-    const data = await res.json()
-    return data
-    //UI.getMealIds(data)
+    try {
+        const res = await fetch(categoryBaseURL + category)
+        const data = await res.json()
+        return data
+        //UI.getMealIds(data)
+    } catch (err) {
+        console.log(err);
+    }
+
 }
 
 //fetch a meal by its id
 async function fetchMealById(id) {
-    const res = await fetch(idBaseURL + id)
-    const data = await res.json()
-    //find a way to return an array of objects
-    //console.log(data);
-    UI.createMeals(data)
-    return data
+    try {
+        const res = await fetch(idBaseURL + id)
+        const data = await res.json()
+        //find a way to return an array of objects
+        //console.log(data);
+        UI.createMeals(data)
+        return data
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 
-
-// async function createMealCard() {
-//     const res = await fetch(idBaseURL)
-//     const data = res.json()
-// }
 
 //LOAD FUNCTIONS ON WINDOW LOAD
 document.addEventListener('DOMContentLoaded', () => {
@@ -50,6 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
     UI.changeCategoryColor()
     //show default beef category 
     UI.getCategoryMeals('beef')
+    //show favourite meals
 })
+
+
 
 

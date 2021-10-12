@@ -7,22 +7,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="images/fork-and-knife.ico"/>
-    <title>My Foods | Home</title>
+    <title>My Foods | Favourites</title>
 </head>
 <body class="disable-select">
     <div class="container">
         <h1 class="main-title"><span class="active">My</span> Foods <i class="fas fa-utensils active"></i></h1>
         <nav class="navbar">
-            <a href="index.html" class="active"><i class="fas fa-home"></i></a>
+            <a href="index.html"><i class="fas fa-home"></i></a>
             <a href="search.html"><i class="fas fa-search"></i></a>
             <a href="country.html"><i class="far fa-list-alt"></i></a>
-            <a href="favourite.html"><i class="far fa-heart"></i></a>
+            <a href="favourite.html" class="active"><i class="far fa-heart"></i></a>
         </nav>
-        <section class="random-meal-section">
-            <!-- random meal container -->
-        </section>
         <section class="meal-categories-section">
-            <h2 class="meal-categories-title">Meal Category</h2>
+            <h2 class="favourite-title">My Favourites</h2>
             <div class="categories-container">
                 <div class="category active-background" id="Beef"><i class="fas fa-hamburger"></i><p>Beef</p></div>
                 <div class="category" id="Chicken"><i class="fas fa-drumstick-bite"></i><p>Chicken</p></div>
@@ -39,27 +36,15 @@
                 <div class="category" id="Breakfast"><i class="fas fa-coffee"></i><p>Morning</p></div>
                 <div class="category" id="Goat"><i class="fas fa-horse"></i><p>Goat</p></div>
             </div>
-            <div class="grid">
-                <!-- <div class="grid-item meal">
-                        <div class="meal-photo">
-                            <img src="https://www.themealdb.com/images/media/meals/qqwypw1504642429.jpg" alt="meal">
-                        </div>
-                        <div class="meal-info">
-                            <h3 class="meal-title active">Pasta Carbonara</h3>
-                            <p class=meal-category><i class="fas fa-boxes active"></i>Pasta</p>
-                            <p class="meal-area"><i class="fas fa-flag active"></i>Italian</p>
-                        </div>
-                        <div class="heart-container">
-                            <i class="fas fa-heart heart-2 pink"></i>
-                        </div>          
-                </div>
-        </div>
-        -->
-            </div>
         </section>
-        <div class="extra-bottom-space"></div>
+        <!-- <h2 class="favourite-title">
+            My Favourites
+        </h2> -->
+        <div class="grid-favourite">
+
+        </div>
     </div>
     <script src="data.js"></script>
-    <script src="app.js"></script>
+    <script src="favourite.js"></script>
 </body>
 </html>

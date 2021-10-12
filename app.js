@@ -3,6 +3,7 @@ let randomMealSection = document.querySelector('.random-meal-section');
 let categories = document.querySelectorAll('.category');
 let grid = document.querySelector('.grid')
 let body = document.querySelector('body')
+let gridItems = document.querySelectorAll('.grid-item')
 let categoryValue;
 let idsArr = []
 let meals = []
@@ -47,6 +48,26 @@ class UI {
         `
         //append div to its parent element
         randomMealSection.appendChild(card)
+
+        const meals = Storage.getMealFromLS();
+        if (meals.includes(meal.id)) {
+            card.innerHTML = `
+        <p for="random-meal-container" class="random-meal-label not-active">Random Meal</p>
+        <div class="random-meal-container" id="${ meal.id }">
+            <div class="random-meal-info">
+                <h3 class="random-meal-title active">${ meal.name }</h3>
+                <p class=random-meal-category><i class="fas fa-boxes active"></i>${ meal.type }</p>
+                <p class="random-meal-area"><i class="fas fa-flag active"></i>${ meal.area }</p>
+                <div class="heart-container">
+                    <i class="fas fa-heart heart-full pink"></i>
+                </div> 
+            </div>
+            <div class="random-meal-photo">
+                <img src="${ meal.thumb }" alt="random meal">
+            </div>
+        </div>
+        `
+        }
     }
 
     //changes category background color on click
@@ -69,31 +90,13 @@ class UI {
             for (let i = 0; i < res.meals.length; i++) {
                 fetchMealById(res.meals[i].idMeal)
             }
-            grid.innerHTML = ''
+            if (grid === null) {
+                return
+            } else {
+                grid.innerHTML = ''
+            }
         })
     }
-
-    //create a meal card
-    // static createMeals(meal) {
-    //     let gridItem = document.createElement('div')
-    //     gridItem.classList.add('grid-item')
-    //     gridItem.classList.add('meal')
-    //     gridItem.id = `${ meal.meals[0].idMeal }`
-    //     gridItem.innerHTML = `
-    //             <div class="meal-photo">
-    //                 <img src="${ meal.meals[0].strMealThumb }" alt="meal">
-    //             </div>
-    //             <div class="meal-info">
-    //                 <h3 class="meal-title active">${ meal.meals[0].strMeal }</h3>
-    //                 <p class=meal-category><i class="fas fa-boxes active"></i>${ meal.meals[0].strCategory }</p>
-    //                 <p class="meal-area"><i class="fas fa-flag active"></i>${ meal.meals[0].strArea }</p>
-    //             </div>
-    //             <div class="heart-container">
-    //                 <i class="fas fa-heart heart-2 pink"></i>
-    //             </div>
-    //     `
-    //     grid.appendChild(gridItem)
-    // }
 
     //create meal card
     static createMeals(data) {
@@ -120,6 +123,30 @@ class UI {
                 </div>
         `
         grid.appendChild(gridItem)
+        //if id is in LS, add pink to heart
+        const meals = Storage.getMealFromLS();
+        if (meals.includes(gridItem.id)) {
+            gridItem.innerHTML = `
+            <div class="meal-photo">
+                <img src="${ meal.thumb }" alt="meal">
+            </div>
+            <div class="meal-info">
+                <h3 class="meal-title active">${ meal.name }</h3>
+                <p class=meal-category><i class="fas fa-boxes active"></i>${ meal.type }</p>
+                <p class="meal-area"><i class="fas fa-flag active"></i>${ meal.area }</p>
+            </div>
+            <div class="heart-container">
+                <div>
+                    <i class="fas fa-heart heart-full pink"></i>
+                </div>
+                
+            </div>
+    `
+        }
+    }
+
+    static showFavouriteMeals() {
+
     }
 }
 
@@ -164,10 +191,6 @@ class Storage {
 
 
 
-
-
-
-
 // EVENT LISTENERS
 
 //get meal id on random meal card click
@@ -188,12 +211,27 @@ grid.addEventListener('click', (e) => {
     }
 })
 
-//body event listener
+//heart listener
 body.addEventListener('click', (e) => {
     if (e.target.classList.contains('fa-heart') && e.target.classList.contains('fas')) {
-        console.log('heart!!');
-        e.target.classList.toggle('pink')
+        //change heart color and animate it
+        e.target.classList.add('pink')
         e.target.classList.toggle('animate-heart')
+        //add/remove favourite meal to/from storage
+        let id = e.target.parentElement.parentElement.parentElement.id
+        if (Storage.getMealFromLS().includes(id)) {
+            e.target.classList.remove('pink')
+            Storage.removeMealFromLS(id)
+        } else {
+            Storage.addMealToLS(id)
+        }
+    }
+})
+
+//favourite button listener
+body.addEventListener('click', (e) => {
+    if (e.target.classList.contains('fa-heart') && e.target.classList.contains('far')) {
+        console.log('hi');
     }
 })
 
@@ -201,11 +239,13 @@ body.addEventListener('click', (e) => {
 
 
 
+//TO DO:
 
-
-
-
-
+//1. insert favorite meal cards on favourite page
+//2. on favourite page make the category filter work
+//3. is it normal to get all the errors on the other html pages?
+//4. do i need to create a new js file for every html page?
+//5. what is webpack?
 
 
 
