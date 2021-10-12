@@ -128,6 +128,32 @@ class Storage {
     }
 }
 
+// EVENT LISTENERS
+
+//heart listener
+body.addEventListener('click', (e) => {
+    if (e.target.classList.contains('fa-heart') && e.target.classList.contains('fas')) {
+        //change heart color and animate it
+        e.target.classList.add('pink')
+        e.target.classList.toggle('animate-heart')
+        //add/remove favourite meal to/from storage
+        let id = e.target.parentElement.parentElement.parentElement.id
+        if (Storage.getMealFromLS().includes(id)) {
+            e.target.classList.remove('pink')
+            Storage.removeMealFromLS(id)
+        } else {
+            Storage.addMealToLS(id)
+        }
+    }
+})
+
+//favourite button listener
+body.addEventListener('click', (e) => {
+    if (e.target.classList.contains('fa-heart') && e.target.classList.contains('far')) {
+        console.log('hi');
+    }
+})
+
 //call fetchMealByName() if search input has value
 searchInput.addEventListener('input', () => {
     let result = searchInput.value
