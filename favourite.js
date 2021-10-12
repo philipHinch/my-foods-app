@@ -147,6 +147,16 @@ class UI {
         }
     }
 
+    //remove filtered meals from ui
+    static removeMealFromUI(id) {
+        let gridItems = document.querySelectorAll('.grid-item')
+        gridItems.forEach((item) => {
+            if (item.id === id) {
+                item.remove()
+            }
+        })
+    }
+
     static showFavouriteMeals() {
         const meals = Storage.getMealFromLS();
         meals.forEach((meal) => {
@@ -155,22 +165,30 @@ class UI {
     }
 
     static filterFavouriteCategories() {
+        //show favourite meals
+        // let meals = Storage.getMealFromLS();
         //change category background color
         categories.forEach((category) => {
             category.addEventListener('click', () => {
+                //
+                //
                 categories.forEach((category) => {
                     category.classList.remove('active-background')
                 })
                 category.classList.add('active-background')
             })
         })
-        //filter favourite meals
-        const meals = Storage.getMealFromLS();
-        categories.forEach((category) => {
-            category.addEventListener('click', () => {
-                console.log(category);
-            }
-            )
+    }
+
+    //NOT WORKING PROPERLY///////----/////////-----///////
+    static filterFunction(category) {
+        let gridItems = document.querySelectorAll('.grid-item')
+        let newArray = Array.from(gridItems).filter(function (el) {
+            return el.children[1].children[1].textContent !== category
+        });
+        newArray.forEach((arr) => {
+            let id = arr.id
+            UI.removeMealFromUI(id)
         })
     }
 }
@@ -222,4 +240,12 @@ body.addEventListener('click', (e) => {
         let id = e.target.parentElement.parentElement.parentElement.id
         Storage.removeMealFromLS(id)
     }
+})
+
+//on category click, show filtered meals
+//NOT WORKING PROPERLY /////-----/////////------//////
+categories.forEach((category) => {
+    category.addEventListener('click', () => {
+        UI.filterFunction(category.id)
+    })
 })

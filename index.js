@@ -1,3 +1,71 @@
+//API DATA HANDLING
+const randomMealURL = 'https://www.themealdb.com/api/json/v1/1/random.php';
+
+const categoryBaseURL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
+
+const idBaseURL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
+
+//fetch random meal
+async function fetchRandomMeal() {
+    try {
+        const res = await fetch(randomMealURL)
+        const data = await res.json()
+        // let meal = new MealCard(data)
+        // return meal.createRandomMealCard()
+        UI.createRandomMealCard(data)
+    } catch (err) {
+        console.log(err);
+    }
+
+}
+
+//fetch all meals within a category
+async function fetchCategoryMeals(category) {
+    try {
+        const res = await fetch(categoryBaseURL + category)
+        const data = await res.json()
+        return data
+        //UI.getMealIds(data)
+    } catch (err) {
+        console.log(err);
+    }
+
+}
+
+//fetch a meal by its id
+async function fetchMealById(id) {
+    try {
+        const res = await fetch(idBaseURL + id)
+        const data = await res.json()
+        //find a way to return an array of objects
+        //console.log(data);
+        UI.createMeals(data)
+        return data
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+
+//LOAD FUNCTIONS ON WINDOW LOAD
+document.addEventListener('DOMContentLoaded', () => {
+    //fetch random meal
+    fetchRandomMeal()
+    setInterval(() => {
+        UI.removeRandomMeal()
+        fetchRandomMeal()
+    }, 8000)
+    //fetchRandomMeal()
+    //
+    UI.changeCategoryColor()
+    //show default beef category 
+    UI.getCategoryMeals('beef')
+    //show favourite meals
+})
+
+//////////////////////////////////////////////
+
 //variables
 let randomMealSection = document.querySelector('.random-meal-section');
 let categories = document.querySelectorAll('.category');
@@ -145,8 +213,8 @@ class UI {
         }
     }
 
-    static showFavouriteMeals() {
-
+    static removeRandomMeal() {
+        randomMealSection.innerHTML = ''
     }
 }
 
@@ -241,11 +309,10 @@ body.addEventListener('click', (e) => {
 
 //TO DO:
 
-//1. insert favorite meal cards on favourite page
-//2. on favourite page make the category filter work
-//3. is it normal to get all the errors on the other html pages?
-//4. do i need to create a new js file for every html page?
-//5. what is webpack?
+//1. on favourite page make the category filter work
+//2. is it normal to get all the errors on the other html pages?
+//3. do i need to create a new js file for every html page?
+//4. what is webpack?
 
 
 

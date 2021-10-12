@@ -66,6 +66,10 @@ a {
   color: var(--light-grey);
 }
 
+.none {
+  display: none !important;
+}
+
 .extra-bottom-space {
   height: 50px;
   width: 100%;
@@ -111,6 +115,9 @@ a {
 
 .random-meal-section {
   margin-top: -40px;
+  width: 100%;
+  height: 177px;
+  transition: all 0.2s ease-in-out;
 }
 
 .random-meal-container {
@@ -125,10 +132,13 @@ a {
   cursor: pointer;
   border: 2px solid var(--dark-grey);
   transition: border 0.2s;
+  transition: box-shadow 0.2s;
+  animation: opacityGrow 0.5s linear;
 }
 
 .random-meal-container:hover {
   border: 2px solid var(--active);
+  box-shadow: 0 0 5px 5px rgba(230, 173, 15, 0.5);
 }
 
 .random-meal-label {
@@ -240,10 +250,12 @@ a {
   cursor: pointer;
   border: 2px solid var(--dark-grey);
   transition: border 0.2s;
+  transition: box-shadow 0.2s;
 }
 
 .grid-item:hover {
   border: 2px solid var(--active);
+  box-shadow: 0 0 5px 5px rgba(230, 173, 15, 0.5);
 }
 
 .meal-photo {
@@ -313,6 +325,7 @@ a {
   color: var(--white);
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .grid-favourite {
@@ -358,5 +371,14 @@ a {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes opacityGrow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
