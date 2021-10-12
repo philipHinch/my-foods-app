@@ -1,6 +1,4 @@
-# My Foods app 
-
-*Work in Progress...*
+# My Foods app (Work in Progress...)
 
 This is not your typical recipe app. 
 
