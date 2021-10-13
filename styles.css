@@ -362,6 +362,49 @@ a {
   border-color: var(--active);
 }
 
+/* COUNTRY PAGE */
+
+.country-section {
+  margin-top: 10px;
+}
+
+.country-title {
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+}
+
+.country-container {
+  display: flex;
+  padding: 8px;
+  overflow-x: scroll;
+}
+
+.grid-country {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.country-container::-webkit-scrollbar {
+  display: none;
+}
+
+.country {
+  background-color: var(--light-grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100px;
+  cursor: pointer;
+}
+
+.country i {
+  margin-right: 5px;
+}
+
 @keyframes heartAni {
   0% {
     transform: scale(0.8);

@@ -8,7 +8,6 @@ async function fetchMealByName(letters) {
         const res = await fetch(nameBaseURL + letters)
         const data = await res.json()
         UI.createMeals(data)
-        console.log(data);
         return data
     } catch (err) {
         console.log(err);
@@ -164,3 +163,9 @@ searchInput.addEventListener('input', () => {
         fetchMealByName(result)
     }
 })
+
+
+
+//TO DO:
+
+//1. get meal id on click

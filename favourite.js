@@ -249,3 +249,8 @@ categories.forEach((category) => {
         UI.filterFunction(category.id)
     })
 })
+
+
+//TO DO:
+
+//1. get meal id on meal click
