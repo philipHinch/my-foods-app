@@ -1,4 +1,4 @@
-# My Foods app (Work in Progress...)
+# My Foods app 
 
 This is not your typical recipe app. 
 
@@ -6,7 +6,7 @@ My Foods will help you to look for your next delicious meal! Search your meals b
 
 The search page will allow you to search meals by their name.
 
-When you find your favourite meals you can save them to your favourites page by clicking on the heart.
+When you find your favourite meal you can save it to your favourites by clicking on the heart.
 
 This app is currently only for mobile devices.
 
