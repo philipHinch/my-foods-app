@@ -444,6 +444,30 @@ body.addEventListener('click', (e) => {
     }
 })
 
+//countries scroll x on mouse hold
+let isDown = false;
+let startX;
+let scrollLeft;
+
+countryContainer.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - countryContainer.offsetLeft;
+    scrollLeft = countryContainer.scrollLeft;
+});
+countryContainer.addEventListener('mouseleave', () => {
+    isDown = false;
+});
+countryContainer.addEventListener('mouseup', () => {
+    isDown = false;
+});
+countryContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - countryContainer.offsetLeft;
+    const walk = (x - startX) * 3; //scroll-fast
+    countryContainer.scrollLeft = scrollLeft - walk;
+});
+
 
 
 

@@ -527,6 +527,32 @@ body.addEventListener('click', (e) => {
 
 //heart listener on RECIPE page - not needed?
 
+//categories scroll x on mouse hold
+let categoriesContainer = document.querySelector('.categories-container')
+let isDown = false;
+let startX;
+let scrollLeft;
+
+categoriesContainer.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - categoriesContainer.offsetLeft;
+    scrollLeft = categoriesContainer.scrollLeft;
+});
+categoriesContainer.addEventListener('mouseleave', () => {
+    isDown = false;
+});
+categoriesContainer.addEventListener('mouseup', () => {
+    isDown = false;
+});
+categoriesContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - categoriesContainer.offsetLeft;
+    const walk = (x - startX) * 3; //scroll-fast
+    categoriesContainer.scrollLeft = scrollLeft - walk;
+
+});
+
 
 
 
