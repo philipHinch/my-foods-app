@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=WindSong&display=swap");
+
 /* variables */
 
 :root {
@@ -305,6 +307,7 @@ a {
   align-items: center;
   width: 30px;
   height: 30px;
+  cursor: pointer;
 }
 .heart-container i {
   font-size: 1.5rem;
@@ -403,6 +406,198 @@ a {
 
 .country i {
   margin-right: 5px;
+}
+
+/* ---------- RECIPE --------- */
+
+.recipe-section {
+  position: relative;
+  width: 398px;
+  background-color: var(--medium-grey);
+  z-index: 5000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 2px solid var(--active);
+}
+
+/* recipe-button */
+
+.close-btn {
+  position: absolute;
+  color: var(--light-grey);
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+i.fa-times {
+  font-size: 2.2rem;
+}
+
+/* recipe-image-container */
+
+.recipe-image-container {
+  width: 200px;
+  border-radius: 50%;
+  margin-top: 10px;
+  border: 3px solid var(--active);
+  overflow: hidden;
+}
+
+.recipe-image-container img {
+  width: 100%;
+  transform: scale(1.1);
+}
+
+/* recipe info */
+
+.recipe-info-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* title */
+
+.recipe-title {
+  font-size: 1.3rem;
+  margin-top: 10px;
+}
+
+/* category */
+
+.recipe-category-container {
+  display: flex;
+  margin-top: 20px;
+}
+
+.recipe-category-container p {
+  color: var(--white);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  font-size: 0.9rem;
+}
+
+.recipe-category-result {
+  margin-left: 5px;
+}
+
+/* area */
+
+.recipe-area-container {
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+.recipe-area-container {
+  color: var(--white);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  font-size: 0.9rem;
+}
+
+.recipe-area-result {
+  margin-left: 5px;
+}
+
+/* ingredients */
+
+.ingredients-container {
+  border-top: 2px solid var(--active);
+  background-color: var(--dark-grey);
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ingredients-title {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.ingredients-list {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.ingredient {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingr-title {
+  color: var(--active);
+  flex: 1;
+  margin-left: 10px;
+}
+
+.ingr-measure {
+  color: var(--white);
+  margin-left: 2px;
+  flex: 1;
+}
+
+/* instructions */
+
+.instructions-container {
+  margin-bottom: 20px;
+  border-top: 2px solid var(--active);
+}
+
+.instructions-title {
+  font-weight: 600;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.instructions {
+  color: var(--white);
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 25px;
+}
+
+.note {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: "WindSong", cursive;
+}
+
+.video {
+  width: 90%;
+  height: 200px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.video iframe {
+  width: 100%;
 }
 
 @keyframes heartAni {
