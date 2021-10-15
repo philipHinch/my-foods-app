@@ -384,5 +384,3 @@ recipeSection.addEventListener('click', (e) => {
 //TO DO:
 
 //1. swap \r\ in recipe for <br> using regex?
-//2. fix the heart function on the recipe page
-//3. fix heart on the favourite recipe page (when removing recipe from favourites from recipe page, the card is still visible on favourites until you refresh page)

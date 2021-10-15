@@ -486,7 +486,6 @@ body.addEventListener('click', (e) => {
         e.target.classList.toggle('animate-heart')
         //add/remove favourite meal to/from storage
         let id = e.target.parentElement.id
-        console.log(id);
         if (Storage.getMealFromLS().includes(id)) { // HERE **********
             e.target.classList.remove('pink')
             Storage.removeMealFromLS(id)
@@ -538,73 +537,6 @@ body.addEventListener('click', (e) => {
 //TO DO:
 
 //1. on favourite page make the category filter work
-//2. swap \r\ in recipe for <br> using regex?
-
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////// OLD METHOD - NOT WORKING PROPERLY /////////////////
-
-//     //get category value and get meals by that category
-//     static showCategoryMeals(data) {
-//         categoryValue = data.textContent
-//         //get all category meals from api
-//         getCategoryMeals()
-//     }
-
-//     //get all meal ids and call function which gets meals by id from api
-//     static getMealIds(data) {
-//         let ids = [];
-//         for (let i = 0; i < data.meals.length; i++) {
-//             ids.push(data.meals[i].idMeal)
-//         }
-//         ids.forEach((id) => {
-//             //console.log(id);
-//             getMealById(id).then(res => meals.push(res))
-//             //create a meal card and get the data from getMealFromId()
-//             //idsArr.push(id)
-//             //maybe call a create card function here and pass id as parameter
-//         })
-//         UI.createMealCard()
-
-//     }
-
-
-
-//     //create meal card
-//     static createMealCard() {
-//         grid.innerHTML = ''
-//         for (let i = 0; i < meals.length; i++) {
-//             let gridItem = document.createElement('div')
-//             gridItem.classList.add('grid-item')
-//             gridItem.classList.add('meal')
-//             gridItem.innerHTML = `
-//             <div class="meal-photo">
-//             <img src="${ meals[i].meals[0].strMealThumb }" alt="meal">
-//         </div>
-//         <div class="meal-info">
-//             <h3 class="meal-title active">${ meals[i].meals[0].strMeal }</h3>
-//             <p class=meal-category><i class="fas fa-boxes active"></i>${ meals[i].meals[0].strCategory }</p>
-//             <p class="meal-area"><i class="fas fa-flag active"></i>${ meals[i].meals[0].strArea }</p>
-//         </div>
-//         <div class="heart-container">
-//             <i class="fas fa-heart heart-2 pink"></i>
-//         </div>
-//             `
-//             grid.appendChild(gridItem)
-//         }
-//         meals = []
-//     }
-// }
-
+//2. swap \r\ or "." in recipe instructions for <br> using regex?
 
 

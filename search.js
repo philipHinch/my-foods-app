@@ -372,7 +372,3 @@ recipeSection.addEventListener('click', (e) => {
 
 
 //1. swap \r\ in recipe for <br> using regex?
-//2. fix the heart function on the recipe page
-//3. create if - else inside the create recipe. if the meal is in favourites already, create a meal that has a pink heart
-
-//4.check the country.js page for reference. the green is all new code, the blue is modified or extra.
