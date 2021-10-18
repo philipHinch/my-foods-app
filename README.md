@@ -2,7 +2,7 @@
 
 This is not your typical recipe app. 
 
-My Foods will help you to look for your next delicious meal! Search your meals based on their category or the country of provenience. 
+My Foods will help you to look for your next delicious meal! Search your meals based on their category or their country of provenience. 
 
 The search page will allow you to search meals by their name.
 
