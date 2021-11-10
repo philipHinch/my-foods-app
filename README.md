@@ -10,6 +10,8 @@ When you find your favourite meal you can save it to your favourites by clicking
 
 This app is currently only for mobile devices.
 
+Design inpired by [Adhiari Subekti](https://dribbble.com/shots/15125197-Food-Recipe-Apps-Dark-Mode).
+
 ---
 
 Technologies used:
